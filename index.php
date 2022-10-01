@@ -1,19 +1,24 @@
 <?php
 	declare(strict_types=1);
-	// header("Content-type: text/html; charset=utf-8");
-	header('Content-Type: application/json');
 
 	require "./src/Models/MarcaDagua.php";
 
+	$imagemOriginal = "a.jpg";
+	$imagemMarcaDagua = "marca-dagua.png";
+	$imagemResultado = "resultado.jpg";
+	$porporcaoResize = 4;
+	$qualidadeResize = 35;
+
 	$iMage = new MarcaDagua();
 
-	$iMage->setImagemOriginal('a.jpg');
-	$iMage->setImagemMarcaDagua('marca-dagua.png'); //Obrigatório ser um png
+	$iMage->setImagens($imagemOriginal, $imagemMarcaDagua);
+			// $iMage->setImagemOriginal($imagemOriginal);
+			// $iMage->setImagemMarcaDagua($imagemMarcaDagua);
 
 	$iMage->criarImagemComMarcaDagua();
 
-	$iMage->resizeImagem(4);
-	$iMage->salvarNovaImagem("resultado.jpg", 35);
+	$iMage->resizeImagem($porporcaoResize);
+	$iMage->salvarNovaImagem($imagemResultado , $qualidadeResize);
 
 	$iMage->imprimirResultado();
 

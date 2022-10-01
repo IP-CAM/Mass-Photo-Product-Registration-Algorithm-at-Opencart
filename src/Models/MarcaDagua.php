@@ -17,6 +17,11 @@ class MarcaDagua
 
 	}
 
+	public function setImagens($imagemOriginal, $imagemMarcaDagua) {
+		$this->setImagemOriginal($imagemOriginal);
+		$this->setImagemMarcaDagua($imagemMarcaDagua);
+	}
+
 	public function setImagemOriginal($imagem) {
 		$this->_imagemOriginal = $imagem;
 		list($this->_oringialWidth, $this->_oringialHeight) = getimagesize($imagem);
@@ -45,12 +50,9 @@ class MarcaDagua
 			$this->_oringialWidth, $this->_oringialHeight, 
 			$this->_marcaDaguaWidth, $this->_marcaDaguaHeight
 		);
-
-		return $this->_memoriaImagemOriginal;
 	}
 
 	public function resizeImagem($proporcao) {
-
 		$widthFinal = $this->_oringialWidth / $proporcao;
 		$heightFinal = $this->_oringialHeight / $proporcao;
 
@@ -81,7 +83,6 @@ class MarcaDagua
 		imagedestroy($this->_memoriaImagemOriginal);
 		imagedestroy($this->_memoriaImagemMarcaDagua);
 	}
-
 }
 
 ?>
