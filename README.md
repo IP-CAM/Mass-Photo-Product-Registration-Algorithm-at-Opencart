@@ -1,4 +1,4 @@
-# algoritmo cadastro de produtos de fotos em massa no opencart
+# Algoritmo cadastro de produtos de fotos em massa no opencart
 
 ### Descrição
 `O objetivo desse projetinho é fazer a leitura de uma pasta local onde será inserido centenas de fotos e inserir elas no opencart para venda. #Essas fotos deve receber um tratamento para adicionar uma marca d'água e reduzir bastante a sua qualidade para ser exibida na loja, já a sua original será criada como um produto de download.`
