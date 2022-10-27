@@ -2,26 +2,55 @@
 	declare(strict_types=1);
 	header('Content-Type: application/json');
 
+	require "./src/extraiImagensController.php";
 	require "./src/marcaDaguaController.php";
 	// require "./src/Models/BancoDeDados.php";
 	require "./src/criaProdutoController.php";
 
+	use controller\ExtraiImagensController as Extracao;
 	use controller\MarcaDaguaController as MarcaDagua;
 	use controller\criaProdutoController as Produto;
-	// use models\Banco;
 
 
-	/* IMAGEM MARCA DAGUA
+	/* 1 - EXTRAIR ARQUIVOS E INFORMACOES
+	* Cria um arquito .txt com informações de produtos
+	* Objetivo: Criar de um arquivo texto contendo um json que será utilizado para cadastro de produtos.
+	*/
+	$extrair = new Extracao();
+	$extrair->extrairArquivos();
+
+
+
+
+	// Pŕoximos passos:
+	// - Encontrar o arquico txt; 
+	// - extrair o json dele;
+	// - Rodar o resto do código em cima desse json para criar imagens;
+	// - Mover imagens para as pastas corretas;
+
+
+
+
+
+
+	var_dump('');
+	die("OK");
+	/* 1 - IMAGEM MARCA DAGUA
 	* Criação de imagens com marca dagua.
 	* Inicialização configura o conversor.
 	* Objetivo: criar um serviço de leitura de imagen para conversão em massa das imagens
 	*/
 	$iMage = new MarcaDagua(4, 35, "marca-dagua.png");
-	$produto = new Produto();
-
 	//Cria imagem com a marca dagua
 	$iMage->aplicarMarcaDagua("a.jpg");
 
+	/* 2 - CADASTRO DE PRODUTO
+	* Cria produto na loja opencart com os dados fornecido.
+	* Cria arquivo de download e vincula ao produto cadastrado.
+	* Objetivo: Cadastrar uma foto como produto para venda que possibilite o cliente realizar
+	* download da imagem sem marca d'água e boa qualidade.
+	*/
+	$produto = new Produto();
 	//cadastro o produto
 	$produto->criaProduto(
 			'JHONE BERING', 
