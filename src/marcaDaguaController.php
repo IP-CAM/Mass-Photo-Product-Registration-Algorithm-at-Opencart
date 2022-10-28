@@ -10,26 +10,37 @@
     	private $_imagem;
     	private $_porporcaoResize;
 		private $_qualidadeResize;
-		private $_imagemResultado;
+		private $_imagemMarcaDagua;
+		// private $_imagemResultado;
 
     	public function __construct(int $porporcaoResize, int $qualidadeResize, string $imagemMarcaDagua)
 		{
 			$this->_iMage = new MarcaDagua();
 			$this->_porporcaoResize = $porporcaoResize;
 			$this->_qualidadeResize = $qualidadeResize;
-			$this->_imagemResultado = "resultado.jpg";
-
-			$this->_iMage->setImagemMarcaDagua($imagemMarcaDagua);
+			$this->_imagemMarcaDagua = $imagemMarcaDagua;
 		}
 
-		public function aplicarMarcaDagua($imagemOriginal) {
-			$this->_iMage->setImagemOriginal($imagemOriginal);
+		public function aplicarMarcaDagua($imagemOriginal, $pasta, $imagemMarcaDagua, $pastaDestino) {
+
+			// var_dump("Vai ser convertido");
+			// var_dump($pasta . '/' . $imagemOriginal);
+			// var_dump("Será enviado para");
+			// var_dump($pastaDestino . '/' . $imagemMarcaDagua);
+			//die;
+
+			$this->_iMage->setImagemMarcaDagua($this->_imagemMarcaDagua);
+
+			$this->_iMage->setImagemOriginal($pasta . '/' . $imagemOriginal);
 			$this->_iMage->criarImagemComMarcaDagua();
 			$this->_iMage->resizeImagem($this->_porporcaoResize);
-			$this->_iMage->salvarNovaImagem($this->_imagemResultado , $this->_qualidadeResize);
-			$this->_iMage->imprimirResultado();
+			$this->_iMage->salvarNovaImagem($pastaDestino . '/' . $imagemMarcaDagua , $this->_qualidadeResize);
+			
+			//Imprime imagem na tela
+			// $this->_iMage->imprimirResultado();
 
 			$this->_iMage->destroiImagens();
+			// var_dump($imagemOriginal);die("TTT");
 		}
     }
 ?>
