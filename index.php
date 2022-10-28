@@ -159,7 +159,7 @@
 						$jsonProduto->tituloProduto, //'Titulo do produto 13', 
 						$jsonProduto->tituloProduto. ' - Download', 
 						$jsonProduto->arquivoFoto, //'cachoeira-bras-gomes.jpeg', //Em "/storage/download/"
-						$jsonProduto->nomeMascara. rand(1000000, 9999999) //'mask-cachoeira-bras-gomes.jpeg'
+						rand(1000000, 9999999) . "_" .$jsonProduto->nomeMascara //'mask-cachoeira-bras-gomes.jpeg'
 				);
 
 				// Pŕoximos passos:
