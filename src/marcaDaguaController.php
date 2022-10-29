@@ -28,6 +28,11 @@
 			// var_dump("Será enviado para");
 			// var_dump($pastaDestino . '/' . $imagemMarcaDagua);
 			//die;
+			// var_dump("IMAGEM CONVERTENDO");
+			// var_dump($imagemOriginal);
+			// $ext = pathinfo($imagemOriginal, PATHINFO_EXTENSION);
+			// if(!in_array($ext, array('jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG')))
+			// 	return;
 
 			$this->_iMage->setImagemMarcaDagua($this->_imagemMarcaDagua);
 

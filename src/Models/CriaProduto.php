@@ -15,18 +15,19 @@ class CriaProduto {
 	/**
 	 * criaProduto: Insere registro de um novo produto
 	 * Params: 
-	 * - model: string  Nome do Fotogrado (possível alteração para um dos códigos de barra)
+	 * - nomeFotografo: string  Nome do Fotogrado usado no SKU para identificar o fotografo
 	 * - image: string  caminho da imagem thumbnails com a marca d'agua que será visível para o usuário
 	 * - price: float   valor de venda da foto
 	 * Return:
 	 * - id:    integer Identificador do produto se for criado
 	 */
-	public function criaProduto($model, $image, $price) {
+	public function criaProduto($nomeFotografo, $image, $price) {
 		$dateCriacao = date('Y-m-d H:i:s');
 
 		$queryInsertProduto = "INSERT INTO 
 			ocbr_product (
-				model, 
+				model,
+				sku, 
 				image,
 				price, 
 				date_available, 
@@ -37,7 +38,8 @@ class CriaProduto {
 				location, stock_status_id, shipping, subtract, minimum, sort_order, viewed
 			)
 			VALUES (
-				'$model', 
+				'Fotos', 
+				'$nomeFotografo',
 				'$image', 
 				$price, 
 				'$dateCriacao', 
