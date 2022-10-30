@@ -15,18 +15,19 @@ class CriaProduto {
 	/**
 	 * criaProduto: Insere registro de um novo produto
 	 * Params: 
-	 * - model: string  Nome do Fotogrado (possível alteração para um dos códigos de barra)
+	 * - nomeFotografo: string  Nome do Fotogrado usado no SKU para identificar o fotografo
 	 * - image: string  caminho da imagem thumbnails com a marca d'agua que será visível para o usuário
 	 * - price: float   valor de venda da foto
 	 * Return:
 	 * - id:    integer Identificador do produto se for criado
 	 */
-	public function criaProduto($model, $image, $price) {
+	public function criaProduto($nomeFotografo, $image, $price) {
 		$dateCriacao = date('Y-m-d H:i:s');
 
 		$queryInsertProduto = "INSERT INTO 
 			ocbr_product (
-				model, 
+				model,
+				sku, 
 				image,
 				price, 
 				date_available, 
@@ -37,7 +38,8 @@ class CriaProduto {
 				location, stock_status_id, shipping, subtract, minimum, sort_order, viewed
 			)
 			VALUES (
-				'$model', 
+				'Fotos', 
+				'$nomeFotografo',
 				'$image', 
 				$price, 
 				'$dateCriacao', 
@@ -101,6 +103,29 @@ class CriaProduto {
 		 $this->_bd->insert($queryInsertDescricao);
 	}
 
+
+	/**
+	 * insereCategoria: Atribui uma categoria ao produto. A categoria precisa ser criada antes de fazer a 
+	 * inserção das 
+	 * fotos, a ausencia da categoria invalida o resto do processo.
+	 * PENDECIA: Antes de tudo, verificar se a categoria informada existe, se não, interrompe o processo
+	 * 
+	 * Params:
+	 * - idProduto:     integer    Id identificador do produto que foi recém criado;
+	 * - idCategoria:   integer    Id da categoria que o produto será inserido;
+	 * Return: 
+	 * - Empty return
+	*/
+	public function insereCategoria($idProduto, $idCategoria) {
+		$queryInsereCategoria = "
+			INSERT INTO
+				`ocbr_product_to_category`
+					(`product_id`, `category_id`)
+				VALUES 
+					($idProduto, $idCategoria)";
+
+		$this->_bd->insert($queryInsereCategoria);
+	}
 
 	/**
 	 * criaDownload: Cria o download que será disponibilizado após a compra do produto

@@ -1,1 +1,0 @@
-[{"evento":"rapel-cachoeira","nomeFotografo":"jhone-bering","dataEvento":"05-10-2022","arquivoFoto":"cachoeira-bras-gomes.jpeg","nomeMascara":"gerar-nome-para-mascarar-arquivo","preco":"4.50","tituloProduto":"Rapel Cachoeira Itatiaia - cod3182"}]
