@@ -134,9 +134,10 @@
 		INSTRUÇÕES:
 		1 - Criar arquivo zip contendo apenas as fotos que serão publicadas;
 		2 - Arquivo zip deve contera seguinte estrutura no nome:
-			a - nome-do-fotografo_nome-do-evento_data-do-evento.zip;
-			b - Exemplo: jhone-bering_rapel-cachoeira-viana_23-10-2022.zip;
-			c - obs.: Usar caixa baixa, separar palavras com hífen, separar fotografo evento e data com underline.
+			a - Id do evento cadastrado no opencart
+			b - id_nome-do-fotografo_nome-do-evento_data-do-evento.zip;
+			c - Exemplo: 60_jhone-bering_rapel-cachoeira-viana_23-10-2022.zip;
+			D - obs.: Usar caixa baixa, separar palavras com hífen, separar fotografo evento e data com underline.
 		3 - Colocar o arquivo zip dentro da pasta "uploads";
 		4 - Executar script;
 		5 - Enviar as imagens para o projeto opencart nos seguintes caminhos:
