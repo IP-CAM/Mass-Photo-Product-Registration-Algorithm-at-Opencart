@@ -96,9 +96,10 @@
 				*/
 				$produto = new Produto();
 				$produto->criaProduto(
+						$jsonProduto->idCategoria,   //66
 						$jsonProduto->nomeFotografo, //'JHONE BERING', 
 						'/catalog/fotosMarcaDagua/' . $jsonProduto->nomeMascara, ///image/catalog/fotosMarcaDagua
-						4.9, 
+						3.5, 
 						$jsonProduto->tituloProduto, //'Titulo do produto 13', 
 						$jsonProduto->tituloProduto. ' - Download', 
 						$jsonProduto->arquivoFoto, //'cachoeira-bras-gomes.jpeg', //Em "/storage/download/"

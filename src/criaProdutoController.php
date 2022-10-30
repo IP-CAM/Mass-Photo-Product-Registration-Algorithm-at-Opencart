@@ -18,6 +18,7 @@ class criaProdutoController {
 	 * criaProduto: Cria um novo produto na loja Opencart com informações extraída da imagem a ser
 	 * cadastrada para venda como download.
 	 * Params: 
+	 * - idCategoria:    integer  Id identificador da categoria que o produto será inserido.
 	 * - nomeFotografo:  string   Nome do fotografo utilizado para identificar quem é autor da foto.
 	 * - imagemProduto:  string   Caminho da imagem com marca d'água que será exibida para o usuário na compra.
 	 * - valor:          float    Valor a ser comercializado na foto.
@@ -29,10 +30,22 @@ class criaProdutoController {
 	 * Return:
 	 * - Not Return
 	 */
-	public function criaProduto($nomeFotografo, $imagemProduto, $valor, $tituloProduto, $tituloDownload, $arquivoDownload, $maskDownload) { 
+	public function criaProduto($idCategoria, $nomeFotografo, $imagemProduto, $valor, $tituloProduto, $tituloDownload, $arquivoDownload, $maskDownload) { 
+
+		/*
+		* VERIFICAÇÃO
+		* Verificar se todos os parâmetros necessários estão disponíveis
+		* 1 - Verificar se o id da categoria foi enviado;
+		* 2 - Fazer uma chamada para verificar se a categoria informada de fato existe;
+		* 3 - 
+		*/
+
+
+
 		//Criação de produto
 		$idProduto = $this->_produto->criaProduto($nomeFotografo, $imagemProduto, $valor);
 		$this->_produto->criaDescricaoProduto($idProduto, $tituloProduto);
+		$this->_produto->insereCategoria($idProduto, $idCategoria);
 
 		//Criação de download
 		$idDownload = $this->_produto->criaDownload($tituloDownload, $arquivoDownload, $maskDownload);

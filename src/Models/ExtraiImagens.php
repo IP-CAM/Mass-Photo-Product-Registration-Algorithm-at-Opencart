@@ -35,9 +35,10 @@ class ExtraiImagens {
 
 			$informacoesZip = explode('_', explode('.', $arquivoZip)[0]);
 
-			$autor = $informacoesZip[0];
-			$evento = $informacoesZip[1];
-			$dataEvento = $informacoesZip[2];
+			$idCategoria = $informacoesZip[0]; 
+			$autor = $informacoesZip[1];
+			$evento = $informacoesZip[2];
+			$dataEvento = $informacoesZip[3];
 
 			// var_dump("Arquivo: ", $arquivoZip);
 			// var_dump("Autor: ", $autor);
@@ -49,7 +50,7 @@ class ExtraiImagens {
 			*  Cria pasta e extrair os arquivos zip
 			*/
 					//Criar pasta onde será extraido os arquivos
-			$folderExtracted = $autor.'_'.$evento.'_'.$dataEvento;
+			$folderExtracted = $idCategoria . '_' . $autor.'_'.$evento.'_'.$dataEvento;
 			mkdir(getcwd().'/'.$pastaUploads.$folderExtracted, 0755, true);
 
 			//Extrai arquivos
@@ -103,6 +104,7 @@ class ExtraiImagens {
 					continue;
 
 				$json[] = array(
+					'idCategoria' => $idCategoria,
 					'evento' => $nomeEvento,
 					'nomeFotografo' => $nomeAutor,
 					'dataEvento' => $dataEvento,

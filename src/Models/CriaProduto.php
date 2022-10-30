@@ -105,6 +105,29 @@ class CriaProduto {
 
 
 	/**
+	 * insereCategoria: Atribui uma categoria ao produto. A categoria precisa ser criada antes de fazer a 
+	 * inserção das 
+	 * fotos, a ausencia da categoria invalida o resto do processo.
+	 * PENDECIA: Antes de tudo, verificar se a categoria informada existe, se não, interrompe o processo
+	 * 
+	 * Params:
+	 * - idProduto:     integer    Id identificador do produto que foi recém criado;
+	 * - idCategoria:   integer    Id da categoria que o produto será inserido;
+	 * Return: 
+	 * - Empty return
+	*/
+	public function insereCategoria($idProduto, $idCategoria) {
+		$queryInsereCategoria = "
+			INSERT INTO
+				`ocbr_product_to_category`
+					(`product_id`, `category_id`)
+				VALUES 
+					($idProduto, $idCategoria)";
+
+		$this->_bd->insert($queryInsereCategoria);
+	}
+
+	/**
 	 * criaDownload: Cria o download que será disponibilizado após a compra do produto
 	 * Params: 
 	 * - nomeDonwload:             string   Título do cadastro do Download

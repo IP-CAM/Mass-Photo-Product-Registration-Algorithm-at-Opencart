@@ -23,14 +23,15 @@
 
 		public function aplicarMarcaDagua($imagemOriginal, $pasta, $imagemMarcaDagua, $pastaDestino) {
 
-			// var_dump("Vai ser convertido");
-			// var_dump($pasta . '/' . $imagemOriginal);
-			// var_dump("Será enviado para");
-			// var_dump($pastaDestino . '/' . $imagemMarcaDagua);
+			var_dump("Vai ser convertido");
+			var_dump($pasta . '/' . $imagemOriginal);
+			var_dump("Será enviado para");
+			var_dump($pastaDestino . '/' . $imagemMarcaDagua);
 			//die;
-			// var_dump("IMAGEM CONVERTENDO");
-			// var_dump($imagemOriginal);
-			// $ext = pathinfo($imagemOriginal, PATHINFO_EXTENSION);
+			var_dump("IMAGEM CONVERTENDO");
+			var_dump($imagemOriginal);
+			$ext = pathinfo($imagemOriginal, PATHINFO_EXTENSION);
+			var_dump($ext);
 			// if(!in_array($ext, array('jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG')))
 			// 	return;
 
